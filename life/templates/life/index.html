@@ -7,14 +7,45 @@
 		<title></title>
 
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{% static '/life/vendors/bootstrap/css/bootstrap.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
 
-		<script src="{% static '/life/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
-		<script src="{% static '/life/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
 	</head>
 	<body>
 		<!-- Your layout here -->
+    <input type="text"></input>
+    <button class="btn btn-default">Submit</button>
 
 	</body>
+
+<script>
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+  
+  $('button').button().click(function (event) {
+  var postdata = {
+    'name':$('input').val(),
+    'csrfmiddlewaretoken': csrftoken
+  };
+  $.post('groups/', postdata);
+  });
+
+
+</script>
 </html>

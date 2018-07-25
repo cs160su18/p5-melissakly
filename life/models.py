@@ -24,3 +24,6 @@ class Spending(models.Model):
   description = models.CharField(max_length=100)
   def __str__(self):
     return self.name
+
+# user = User.objects.create_user('User1', 'user1@user1.user1', 'password')
+# user.save()

@@ -26,6 +26,7 @@ def earn(request):
         form = EarnForm()
     return render(request, 'life/earnings.html', {'form': form}) 
 
+  
 def goals(request):
     if request.method == 'POST':
         form = GoalsForm(request.POST)
@@ -41,30 +42,33 @@ def goals(request):
 def index(request):
     return render(request, 'life/index.html') 
   
+def earningsList(request):
+  if request.method == "GET":
+    all_groups = Earning.objects.all()
+  return render(request, 'life/view_earnings.html', {'earnings': all_groups})   
   
-  
-class EarnListView(generic.ListView):
-    model = Earning
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get the context
-        context = super(EarnListView, self).get_context_data(**kwargs)
-        # Create any data and add it to the context
-        context['some_data'] = 'This is just some data'
-        return context
+# class EarnListView(generic.ListView):
+#     model = Earning
+#     def get_context_data(self, **kwargs):
+#         # Call the base implementation first to get the context
+#         context = super(EarnListView, self).get_context_data(**kwargs)
+#         # Create any data and add it to the context
+#         context['some_data'] = 'This is just some data'
+#         return context
       
       
-class EarnListDetailView(generic.DetailView):
-    model = Earning
-    def get_context_data(self, **kwargs):
-        context = super(EarnListDetailView, self).get_context_data(**kwargs)
-        context['earn'] = self.object.deals.all()     
-        item = context['earn'].name
-        items = []
-        all_groups = Groups.objects.all()
-        for obj in all_groups:
-            items.append(obj.name)
-        response = serialize('json', all_groups)
-        return HttpResponse(response, content_type="application/json")
+# class EarnListDetailView(generic.DetailView):
+#     model = Earning
+#     def get_context_data(self, **kwargs):
+#         context = super(EarnListDetailView, self).get_context_data(**kwargs)
+#         context['earn'] = self.object.deals.all()     
+#         item = context['earn'].name
+#         items = []
+#         all_groups = Groups.objects.all()
+#         for obj in all_groups:
+#             items.append(obj.name)
+#         response = serialize('json', all_groups)
+#         return HttpResponse(response, content_type="application/json")
 #         if item in items:
 #             context['addable'] = False
 #         else:

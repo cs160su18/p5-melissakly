@@ -6,6 +6,6 @@ urlpatterns = [
   path('spendings/', views.spend, name='spend'),
   path('earnings/', views.earn, name='earn'),
   path('goals/', views.goals, name='goals'),
-  path('view_earnings/', views.EarnListView.as_view(), name='earnings'),
+  path('view_earnings/', views.earningsList, name='earnings'),
 #   path('view_earnings/<int:pk>', views.EarnListDetailView.as_view(), name='earnings-detail')
 ]

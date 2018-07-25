@@ -3,8 +3,6 @@ from django.core import serializers
 from django.urls import reverse
 from django.views import generic
 from django import forms
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from .forms import *
@@ -16,6 +14,7 @@ def spend(request):
         if form.is_valid():
             spending = Spending.create(form.cleaned_data['name'], form.cleaned_data['cost'], form.cleaned_data['description'])
             spending.save()
+            return HttpResponseRedirect('/')
     else:
         form = SpendForm()
     return render(request, 'life/spendings.html', {'form': form})
@@ -26,6 +25,7 @@ def earn(request):
         if form.is_valid():
             earning = Earning.create(form.cleaned_data['name'], form.cleaned_data['amount'], form.cleaned_data['description'])
             earning.save()
+            return HttpResponseRedirect('/')
     else:
         form = EarnForm()
 
@@ -37,6 +37,7 @@ def goals(request):
         if form.is_valid():
             goal = Achievement.create(form.cleaned_data['goal'], form.cleaned_data['week'], form.cleaned_data['achieved'])
             goal.save()
+            return HttpResponseRedirect('/')
     else:
         form = GoalsForm()
 

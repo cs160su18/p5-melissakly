@@ -15,26 +15,44 @@
 	</head>
 	<body>
 		<!-- Your layout here -->
-    <a href="index"> Go back</a>
+    <a href=".."> Go back</a>
     
-    <h2>
+<!--     <h2>
       Earnings
-    </h2>
+    </h2> -->
     
-    
+<!--     
     <p>
       Submit an Earning
-    </p>
-    <form method="post">
+    </p> -->
+    {% block content %}
+    <form action="{{earn}}" method="post">
+        {% csrf_token %}
+
+        <h1> Submit an earning </h1>
+        <br>
+        <div class="container mb-5">
+            <div class="row">
+                {% for field in form  %}
+                    <div class="col-sm-6">
+                        <b>{{ field.label_tag }}</b>  {{ field }} 
+                        <br><br>
+                    </div>
+                {% endfor %}
+            </div>  
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+    {% endblock %}
+<!--     <form method="post">
       {% csrf_token %}
-      <!-- {{ form }} -->
       {% for field in form %}
           <p>{{ field.label_tag }} {{ field }}</p>
       {% endfor %}
      
    
     <input type="submit" value="Submit">
-    </form>
+    </form> -->
 
 	</body>
 </html>

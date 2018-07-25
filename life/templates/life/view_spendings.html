@@ -1,10 +1,11 @@
+<a href=".."> Go back</a>
 {% block content %}
     <h1>Spendings: </h1>
     <ul>
 
-      {% for item in spend_list %}
+      {% for item in spend_list%}
       <li>
-        <a>{{item.name}} {{item.cost}} {{item.description}}</a>
+        <a>Name: {{item.name}} || Cost: ${{item.cost}} || Description: {{item.description}}</a>
       </li>
       {% endfor %}
     

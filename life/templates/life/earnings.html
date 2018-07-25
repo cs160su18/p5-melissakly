@@ -16,15 +16,6 @@
 	<body>
 		<!-- Your layout here -->
     <a href=".."> Go back</a>
-    
-<!--     <h2>
-      Earnings
-    </h2> -->
-    
-<!--     
-    <p>
-      Submit an Earning
-    </p> -->
     {% block content %}
     <form action="{{earn}}" method="post">
         {% csrf_token %}
@@ -41,18 +32,8 @@
                 {% endfor %}
             </div>  
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"/>
     </form>
     {% endblock %}
-<!--     <form method="post">
-      {% csrf_token %}
-      {% for field in form %}
-          <p>{{ field.label_tag }} {{ field }}</p>
-      {% endfor %}
-     
-   
-    <input type="submit" value="Submit">
-    </form> -->
-
 	</body>
 </html>

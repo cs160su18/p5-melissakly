@@ -1,10 +1,11 @@
+<a href=".."> Go back</a>
 {% block content %}
     <h1>Achievements: </h1>
     <ul>
 
       {% for item in goals_list%}
       <li>
-        <a>{{item.goal}} {{item.week}} {{item.achieved}}</a>
+        <a>Date: {{item.week}} || Goal: ${{item.goal}} || Achieved? {{item.achieved}}</a>
       </li>
       {% endfor %}
     

@@ -2,9 +2,9 @@
     <h1>Spendings: </h1>
     <ul>
 
-      {% for item in item_list %}
+      {% for item in spend_list %}
       <li>
-        <a href="{{item.get_absolute_url}}">{{item.name }}</a>
+        <a>{{item.name}} {{item.cost}} {{item.description}}</a>
       </li>
       {% endfor %}
     

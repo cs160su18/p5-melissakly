@@ -2,9 +2,9 @@
     <h1>Achievements: </h1>
     <ul>
 
-      {% for item in item_list %}
+      {% for item in goals_list%}
       <li>
-        <a href="{{item.get_absolute_url}}">{{item.name }}</a>
+        <a>{{item.goal}} {{item.week}} {{item.achieved}}</a>
       </li>
       {% endfor %}
     

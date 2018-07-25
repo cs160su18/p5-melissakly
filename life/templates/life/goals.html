@@ -16,8 +16,29 @@
 	<body>
 		<!-- Your layout here -->
     <a href=".."> Go back</a>
-    
-    <h2>
+        {% block content %}
+    <form action="{{earn}}" method="post">
+        {% csrf_token %}
+
+        <h1> Achievements </h1>
+      <p>
+      Submit an Achievement
+    </p>
+        <br>
+        <div class="container mb-5">
+            <div class="row">
+                {% for field in form  %}
+                    <div class="col-sm-6">
+                        <b>{{ field.label_tag }}</b>  {{ field }} 
+                        <br><br>
+                    </div>
+                {% endfor %}
+            </div>  
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+    {% endblock %}
+<!--     <h2>
       Achievements
     </h2>
     
@@ -28,10 +49,10 @@
     <form method="post">
       {% csrf_token %}
       <!-- {{ form }} -->
-      {% for field in form %}
+<!--       {% for field in form %}
           <p>{{ field.label_tag }} {{ field }}</p>
-      {% endfor %}
-     
+      {% endfor %} -->
+      -->
    
     <input type="submit" value="Submit">
     </form>

@@ -40,8 +40,18 @@ def goals(request):
 
 
 def index(request):
-    return render(request, 'life/index.html') 
+    return render(request, 'life/index.html')
   
+def spendingsList(request):
+  if request.method == "GET":
+    all_groups = Spending.objects.all()
+  return render(request, 'life/view_spendings.html', {'spend_list': all_groups}) 
+
+def goalsList(request):
+  if request.method == "GET":
+    all_groups = Achievement.objects.all()
+  return render(request, 'life/view_goals.html', {'goals_list': all_groups}) 
+
 def earningsList(request):
   if request.method == "GET":
     all_groups = Earning.objects.all()

@@ -1,0 +1,12 @@
+{% extends "earnings.html" %}
+{% block content %}
+    <h1>Earnings: </h1>
+    <ul>
+
+      {% for item in earnings%}
+      <li>
+        <a href="{{item.get_absolute_url}}">{{item.name}}</a>
+      </li>
+      {% endfor %}
+    
+{% endblock %}
